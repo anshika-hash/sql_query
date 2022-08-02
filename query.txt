@@ -1,0 +1,36 @@
+create database employee;
+use employee;
+EXEC sp_help;
+
+drop database employee;
+
+create table emp(eid int,emp_name varchar(50), dob Datetime,doj date,email varchar(50),gender char);
+
+insert into emp values (3,'virat','2001-04-14 23:56:25', '2005-06-12','virat@gmail.com','M');
+insert into emp values (4,'pc chawla',null,null,'chawla@gmail.com','F');  
+
+update emp set emp_name = 'Anshika Tyagi' where eid = 1;
+update emp set emp_name = 'Anshika Tyagi' where emp_name = 'anshika tyagi';  -- sql is not case sensitive
+update emp set emp_name = 'bob', gender = 'M' where emp_name = 'anshika tyagi';
+delete from emp where dob  IS null; -- don't have to use '=' where have to select value null
+
+
+
+select * from emp; -- no projection no selection type;
+select emp_name,gender from emp; -- projection
+select emp_name,gender from emp where dob is null; --selection and projection
+select * from emp where dob is null; --selection
+
+-- update emp set emp_sal = emp_sal + emp_sal * 25/100 where gender = 'M';
+-- alter table emp ADD column salery int;
+alter table emp ADD  salery int;
+
+insert into emp (dob) values (0); -- if we want to insert but most of the values are null;
+
+alter table emp drop column salery;
+alter table emp ALTER column addresse char(50);
+
+insert into emp(eid,salery) values(6,200000);
+
+
+drop table emp;
