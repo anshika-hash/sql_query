@@ -1,0 +1,59 @@
+-- sorted order
+
+select * from emp ORDER BY doj ASC  -- by default ASC
+select * from emp ORDER BY doj DESC
+
+-- Aggregate function
+-- SUM, MAX, MIN, COUNT, AVG
+
+select sum(eid) from emp;
+select sum(eid) AS Total from emp;  -- Assign name to the total cell
+select sum(eid) as total, max(doj) as maxx, min(doj) as minn, count(doj) as countt, avg(eid) as average from emp;
+
+-- count does't count null value if we pass column name so we should pass (*)
+
+select count(*) as countt from emp;
+
+-- OPERATOR
+
+-- OR, AND
+select * from emp where emp_name = 'virat' or  emp_name = 'pc chawla' or gender = 'M';
+select * from emp where emp_name = 'virat' or  emp_name = 'pc chawla' and gender = 'M';
+
+-- !=
+select * from emp where emp_name != 'virat' and   gender = 'M';
+
+-- Shortcut  =, !=  are IN or NOT IN
+
+select * from emp where gender IN('M','F')
+select * from emp where gender NOT IN('M','F')
+
+--   > or <
+
+select * from emp where salery > 10000 or salery  < 1000
+
+insert into emp(salery) values(10000)
+
+-- Shortcut  > or < is between
+
+select * from emp where salery between 10000 and  1000
+
+-- IS NOT
+
+select * from emp where salery IS NOT NULL;
+
+-- LIKE
+
+select * from emp where emp_name LIKE '%p';
+select * from emp where emp_name LIKE 'p%';
+select * from emp where emp_name LIKE '%p%';
+select * from emp where emp_name LIKE '_p%';
+
+-- GROUP BY
+
+select max(salery) as high from emp GROUP BY salery
+
+select salery ,max(salery) as high from emp GROUP BY salery having salery NOT IN(1000,1500) -- can't use where with group by
+
+select salery, max(salery) as high from emp where salery IN(10000,20000) group by salery;
+
