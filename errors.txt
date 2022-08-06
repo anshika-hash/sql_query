@@ -1,0 +1,29 @@
+use  employee;
+use  employee_details;
+
+select * from empData;
+select * from empDetails;
+sp_rename 'employee_details', 'emp_details';
+
+exec sp_help;
+create table empData(emp_name varchar, phone int, addresse varchar,eid int)
+create table empDetails(qualifications varchar, branch varchar, designation varchar, doj date, dob date, eid int)
+
+Alter table empDetails Add eid int;
+Alter table empData Add eid int;
+insert into empData values('anshika', 54, 'saket colony');
+
+insert into empDetails values('btech', 'IT', 'backend devloper','2022-05-23','14-04-2001');
+
+-- Copy table data into other table
+
+select * into empCopy from emp;
+select * into empCopy from emp where empno < 0;
+
+-- Right table data + Left table matched data;
+-- Left table data + Right table matched data;
+-- Matched data;
+
+select empData.emp_name,empData.addresse,empData.eid,empDetails.eid from empData AempData LEFT OUTER JOIN empDetails BempData ON AempData.eid = BempData.eid;
+select empData.emp_name,empData.addresse,empData.eid,empDetails.eid from empData AempData RIGHT OUTER JOIN empDetails BempData ON AempData.eid = BempData.eid;
+select empData.emp_name,empData.addresse,empData.eid,empDetails.eid from empData AempData OUTER  JOIN empDetails BempData ON AempData.eid = BempData.eid;
