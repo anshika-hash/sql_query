@@ -1,0 +1,34 @@
+drop table employee;
+use employee;
+create table emp1(sno int,emp_name varchar(20), salery int); 
+create table emp2(sno int,emp_name varchar(20), salery int); 
+
+insert into emp1 values(12,'k',1000);
+
+select * from emp1;
+select * from emp2;
+
+-- CROSS JOIN , COMMA JOIN
+
+select emp1.emp_name, emp2.emp_name  from emp1 CROSS JOIN emp2;
+select emp1.emp_name, emp2.emp_name  from emp1 , emp2;
+
+-- EQUI JOIN
+
+select emp1.sno, emp1.emp_name, emp2.sno,emp2.emp_name,emp1.salery, emp2.salery from emp1, emp2 where emp1.sno = emp2.sno;
+
+-- INNER JOIN
+select emp1.sno, emp1.emp_name, emp2.sno,emp2.emp_name,emp1.salery, emp2.salery from emp1 INNER JOIN emp2 ON emp1.sno = emp2.sno;
+
+-- NATURAL JOIN
+
+select emp1.sno, emp1.emp_name, emp2.sno,emp2.emp_name,emp1.salery, emp2.salery from emp1 JOIN emp2 ON emp1.sno = emp2.sno;
+
+
+-- OUTER JOIN
+
+-- LEFT JOIN
+
+select emp1.sno,emp2.sno,emp1.emp_name,emp2.emp_name  from emp1 LEFT OUTER JOIN emp2 ON emp1.sno = emp2.sno;
+select emp1.sno,emp2.sno,emp1.emp_name,emp2.emp_name  from emp1 RIGHT OUTER JOIN emp2 ON emp1.sno = emp2.sno;
+select emp1.sno,emp2.sno,emp1.emp_name,emp2.emp_name  from emp1 FULL OUTER JOIN emp2 ON emp1.sno = emp2.sno;
