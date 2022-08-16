@@ -1,0 +1,28 @@
+use employee;
+Sp_help;
+
+delete  from emp1 where sno = 12
+select * from emp1;
+select * from emp2;
+select * from students;
+
+alter table emp1 add phone_number char(10);
+update  emp1 set student_roll_Number  = 2 where sno = 2;
+
+alter table emp1 add student_roll_Number int;
+select count(salery) as count from emp1 group by salery
+
+Alter table emp1 add constraint FK_Stu_emp foreign key(student_roll_Number) references students(stu_rollNumber);
+Alter table emp1 add constraint PK_EMP1 UNIQUE(sno)
+
+create table students(stu_name varchar(20),stu_class varchar(10), stu_rollNumber int constraint UK__students__4E8EFEB96703F816 unique ); 
+
+alter table students drop constraint PK__students__4E8EFEB96703F816;
+drop table students;
+Alter table students add constraint PK_STU UNIQUE(stu_rollNumber)
+alter table students drop constraint UK__students__4E8EFEB96703F816;
+alter table students add constraint PK__students__4E8EFEB96703F816 primary key(stu_rollNumber);
+
+insert into students values('alex', 'sixth', 2)
+
+
