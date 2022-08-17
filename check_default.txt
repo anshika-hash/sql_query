@@ -1,0 +1,20 @@
+create database students;
+use students;
+create table stu( roll_no int primary key, stu_name varchar(20), section char(1) default 'A');
+insert into stu(roll_no, stu_name) values(1, 'bob');
+
+select * from stu;
+
+Sp_help;
+
+-- CHECK CONSTRAINTS --
+
+alter table stu add age int;
+
+alter table stu add constraint agePositive check(age > 5)
+
+insert into stu(roll_no, stu_name , age) values(2, 'alex', 6);
+
+alter table stu add constraint sec_check check(section in('A','B','C','D','F'));
+
+insert into stu(roll_no, stu_name, section) values(4,'richal', 'D');
